@@ -41,6 +41,10 @@ class Error
      */
     public function setErrorMessage($errorMessage)
     {
+		if (is_array($errorMessage)) {
+			$errorMessage = implode(", ", $errorMessage);
+		}
+
         $this->_errorMessage = $errorMessage;
         return $this;
     }

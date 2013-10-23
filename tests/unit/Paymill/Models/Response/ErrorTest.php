@@ -47,4 +47,24 @@ class ErrorTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($responseCode, $errorModel->getResponseCode());
     }
 
+    /**
+     * Tests the setter and getter of this model
+     * @test
+     */
+    public function setErrorMessageWithArray()
+    {
+        $errorMessage = array("This is a error", "This is an error message again");
+        $httpStatusCode = 200;
+        $responseCode = 20000;
+
+        $errorModel = new Error();
+        $errorModel->setErrorMessage($errorMessage);
+        $errorModel->setHttpStatusCode($httpStatusCode);
+        $errorModel->setResponseCode($responseCode);
+
+        $this->assertEquals($errorMessage[0]. ", " . $errorMessage[1], $errorModel->getErrorMessage());
+        $this->assertEquals($httpStatusCode, $errorModel->getHttpStatusCode());
+        $this->assertEquals($responseCode, $errorModel->getResponseCode());
+    }
+
 }
